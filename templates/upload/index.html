@@ -1,0 +1,275 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row">
+
+        <!-- ========================= -->
+        <!-- Upload Section -->
+        <!-- ========================= -->
+
+        <div class="col-lg-8">
+
+            <h2>
+
+                Upload Documents
+
+            </h2>
+
+            <p class="text-muted">
+
+                Upload PDF and TXT files to build your AI knowledge base.
+
+            </p>
+
+            <div class="upload-card mt-4">
+
+                <div class="upload-icon">
+
+                    <i class="bi bi-cloud-arrow-up-fill"></i>
+
+                </div>
+
+                <h4 class="upload-title">
+
+                    Drag & Drop Files
+
+                </h4>
+
+                <p class="upload-subtitle">
+
+                    or
+
+                </p>
+
+                <input
+
+                    id="fileInput"
+
+                    type="file"
+
+                    multiple
+
+                    accept=".pdf,.txt"
+
+                    hidden>
+
+                <button
+
+                    id="browseBtn"
+
+                    class="btn btn-primary">
+
+                    Browse Files
+
+                </button>
+
+                <hr>
+
+                <p>
+
+                    Supported File Types
+
+                </p>
+
+                <span class="badge bg-primary">
+
+                    PDF
+
+                </span>
+
+                <span class="badge bg-success">
+
+                    TXT
+
+                </span>
+
+                <div
+
+                    id="uploadStatus"
+
+                    class="mt-4">
+
+                </div>
+
+            </div>
+
+            <!-- ========================= -->
+            <!-- Uploaded Documents -->
+            <!-- ========================= -->
+
+            <div class="card mt-4">
+
+                <div class="card-header">
+
+                    <h5>
+
+                        Recent Uploads
+
+                    </h5>
+
+                </div>
+
+                <div class="card-body">
+
+                    <table class="table table-hover">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+
+                                    File Name
+
+                                </th>
+
+                                <th>
+
+                                    Type
+
+                                </th>
+
+                                <th>
+
+                                    Status
+
+                                </th>
+
+                                <th>
+
+                                    Action
+
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody
+
+                            id="documentsTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ========================= -->
+        <!-- Right Panel -->
+        <!-- ========================= -->
+
+        <div class="col-lg-4">
+
+            <!-- Knowledge Base -->
+
+            <div class="stats-card">
+
+                <h5>
+
+                    Knowledge Base
+
+                </h5>
+
+                <hr>
+
+                <p>
+
+                    Documents
+
+                    <span
+
+                        id="documentCount"
+
+                        class="float-end">
+
+                        0
+
+                    </span>
+
+                </p>
+
+                <p>
+
+                    Total Chunks
+
+                    <span
+
+                        id="chunkCount"
+
+                        class="float-end">
+
+                        --
+
+                    </span>
+
+                </p>
+
+                <p>
+
+                    Storage Used
+
+                    <span
+
+                        id="storageUsed"
+
+                        class="float-end">
+
+                        --
+
+                    </span>
+
+                </p>
+
+            </div>
+
+            <!-- Search Scope -->
+
+            <div class="stats-card mt-3">
+
+                <h5>
+
+                    Search Scope
+
+                </h5>
+
+                <select
+
+                    id="documentSearchScope"
+
+                    class="form-select">
+
+                    <option value="global">
+
+                        🌍 Global Documents
+
+                    </option>
+
+                </select>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+
+<script>
+
+requireLogin();
+
+</script>
+
+{% endblock %}

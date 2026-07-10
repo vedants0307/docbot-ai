@@ -1,0 +1,358 @@
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+body{
+
+    font-family:Arial,sans-serif;
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    background:linear-gradient(
+
+        135deg,
+
+        #ffffff 0%,
+
+        #eef5ff 100%
+
+    );
+
+}
+
+/* ----------------------- */
+
+.landing-container{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    position:relative;
+
+}
+
+/* ----------------------- */
+
+.landing-container::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:450px;
+
+    height:450px;
+
+    border-radius:50%;
+
+    background:rgba(
+
+        52,
+
+        152,
+
+        219,
+
+        .12
+
+    );
+
+    filter:blur(
+
+        120px
+
+    );
+
+}
+
+/* ----------------------- */
+
+.glass-card{
+
+    width:550px;
+
+    padding:60px;
+
+    text-align:center;
+
+    background:rgba(
+
+        255,
+
+        255,
+
+        255,
+
+        .68
+
+    );
+
+    border:1px solid rgba(
+
+        255,
+
+        255,
+
+        255,
+
+        .4
+
+    );
+
+    backdrop-filter:blur(
+
+        18px
+
+    );
+
+    -webkit-backdrop-filter:blur(
+
+        18px
+
+    );
+
+    border-radius:28px;
+
+    box-shadow:
+
+        0 20px 45px rgba(
+
+            0,
+
+            0,
+
+            0,
+
+            .08
+
+        );
+
+    transition:.35s;
+
+}
+
+.glass-card:hover{
+
+    transform:
+
+        translateY(-5px);
+
+}
+
+/* ----------------------- */
+
+.logo-circle{
+
+    width:90px;
+
+    height:90px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:white;
+
+    font-size:42px;
+
+    box-shadow:
+
+        0 10px 30px rgba(
+
+            0,
+
+            0,
+
+            0,
+
+            .08
+
+        );
+
+    margin-bottom:25px;
+
+}
+
+/* ----------------------- */
+
+h1{
+
+    font-size:48px;
+
+    font-weight:700;
+
+    color:#1f2937;
+
+}
+
+h4{
+
+    margin-top:15px;
+
+    color:#374151;
+
+    font-weight:600;
+
+}
+
+p{
+
+    margin-top:18px;
+
+    color:#6b7280;
+
+    line-height:1.8;
+
+    font-size:17px;
+
+}
+
+/* ----------------------- */
+
+.button-group{
+
+    margin-top:40px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+}
+
+.button-group .btn{
+
+    width:170px;
+
+    border-radius:14px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    padding:12px;
+
+    transition:.25s;
+
+}
+
+.button-group .btn:hover{
+
+    transform:
+
+        translateY(-2px);
+
+}
+
+
+.auth-card{
+
+    width:460px;
+
+}
+
+.auth-card h2{
+
+    font-size:42px;
+
+    margin-top:25px;
+
+    margin-bottom:10px;
+
+}
+
+.subtitle{
+
+    color:#6b7280;
+
+    margin-bottom:35px;
+
+}
+
+.form-label{
+
+    font-weight:600;
+
+    color:#374151;
+
+}
+
+.form-control{
+
+    height:50px;
+
+    border-radius:12px;
+
+    border:1px solid #d1d5db;
+
+}
+
+.form-control:focus{
+
+    box-shadow:none;
+
+    border-color:#2563eb;
+
+}
+
+.btn-primary{
+
+    height:52px;
+
+    border-radius:14px;
+
+    font-weight:600;
+
+}
+
+.auth-footer{
+
+    margin-top:28px;
+
+    text-align:center;
+
+    color:#6b7280;
+
+}
+
+.auth-footer a{
+
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+.logo-circle i{
+
+    font-size:42px;
+
+    color:#2563eb;
+
+}

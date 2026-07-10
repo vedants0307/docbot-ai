@@ -1,0 +1,49 @@
+.navbar{
+
+    background:white;
+
+    height:75px;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.navbar-brand{
+
+    font-size:28px;
+
+    color:var(--primary);
+
+}
+
+.nav-link{
+
+    margin:0 10px;
+
+    color:var(--text);
+
+    font-weight:500;
+
+}
+
+.nav-link:hover{
+
+    color:var(--primary);
+
+}
+
+.form-control{
+
+    border-radius:25px;
+
+}
+
+.profile-img{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+}

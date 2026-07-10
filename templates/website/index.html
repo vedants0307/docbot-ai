@@ -1,0 +1,252 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row">
+
+        <!-- Left Section -->
+
+        <div class="col-lg-8">
+
+            <h2>
+
+                Website Knowledge Base
+
+            </h2>
+
+            <p class="text-muted">
+
+                Crawl and index websites into your AI knowledge base.
+
+            </p>
+
+            <div class="upload-card mt-4">
+
+                <div class="upload-icon">
+
+                    <i class="bi bi-globe2"></i>
+
+                </div>
+
+                <h4 class="upload-title">
+
+                    Index a Website
+
+                </h4>
+
+                <p class="upload-subtitle">
+
+                    Enter a website URL
+
+                </p>
+
+                <div class="input-group mt-4">
+
+                    <input
+
+                        id="websiteUrl"
+
+                        type="text"
+
+                        class="form-control"
+
+                        placeholder="https://example.com">
+
+                    <button
+
+                        id="indexWebsite"
+
+                        class="btn btn-primary">
+
+                        Index Website
+
+                    </button>
+
+                </div>
+
+                <div
+
+                    id="websiteStatus"
+
+                    class="mt-4">
+
+                </div>
+
+            </div>
+
+            <!-- Indexed Websites -->
+
+            <div class="card mt-4">
+
+                <div class="card-header">
+
+                    <h5>
+
+                        Indexed Websites
+
+                    </h5>
+
+                </div>
+
+                <div class="card-body">
+
+                    <table class="table table-hover">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+
+                                    Website
+
+                                </th>
+
+                                <th>
+
+                                    Status
+
+                                </th>
+
+                                <th>
+
+                                    Action
+
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody
+
+                            id="websiteTable">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Right Section -->
+
+        <div class="col-lg-4">
+
+            <div class="stats-card">
+
+                <h5>
+
+                    Website Statistics
+
+                </h5>
+
+                <hr>
+
+                <p>
+
+                    Indexed Websites
+
+                    <span
+
+                        id="websiteCount"
+
+                        class="float-end">
+
+                        0
+
+                    </span>
+
+                </p>
+
+                <p>
+
+                    Total Chunks
+
+                    <span
+
+                        id="websiteChunks"
+
+                        class="float-end">
+
+                        0
+
+                    </span>
+
+                </p>
+
+                <p>
+
+                    Last Crawl
+
+                    <span
+
+                        id="lastCrawl"
+
+                        class="float-end">
+
+                        --
+
+                    </span>
+
+                </p>
+
+            </div>
+
+            <div class="stats-card mt-3">
+
+                <h5>
+
+                    Search Scope
+
+                </h5>
+
+                <hr>
+                <select
+
+                    id="websiteSearchScope"
+
+                    class="form-select">
+
+                </select>
+
+                <button 
+                    id="askWebsite"
+                    class="btn btn-primary w-100 mt-3">
+
+                    OPEN AI Assistant
+                </button>
+                
+
+                <label>
+
+                    Max Pages
+
+                </label>
+
+                <input
+
+                    id="maxPages"
+
+                    type="number"
+
+                    class="form-control"
+
+                    value="20">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/website.js') }}"></script>
+
+{% endblock %}

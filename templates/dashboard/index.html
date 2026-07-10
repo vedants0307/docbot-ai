@@ -1,0 +1,344 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+
+<!-- <button
+
+    class="btn btn-outline-danger"
+
+    onclick="logout()">
+
+    Logout
+
+</button> -->
+
+<h2
+    id="welcomeUser"
+    class="page-title">
+
+    Good Morning !
+
+</h2>
+
+<p class="page-subtitle">
+
+    Manage your AI Knowledge Base
+
+</p>
+<!-- ================= Dashboard Cards ================= -->
+
+<div class="dashboard-grid">
+
+    <div class="dashboard-card">
+
+        <div class="card-icon">
+
+            <i class="bi bi-file-earmark-text-fill"></i>
+
+        </div>
+
+        <div class="card-title">
+
+            Documents
+
+        </div>
+
+        <div
+            id="documents"
+            class="card-value">
+
+            0
+
+        </div>
+
+    </div>
+
+    <div class="dashboard-card">
+
+        <div class="card-icon">
+
+            <i class="bi bi-globe2"></i>
+
+        </div>
+
+        <div class="card-title">
+
+            Websites
+
+        </div>
+
+        <div
+            id="websites"
+            class="card-value">
+
+            0
+
+        </div>
+
+    </div>
+
+    <div class="dashboard-card">
+
+        <div class="card-icon">
+
+            <i class="bi bi-box-fill"></i>
+
+        </div>
+
+        <div class="card-title">
+
+            Chunks
+
+        </div>
+
+        <div
+            id="chunks"
+            class="card-value">
+
+            0
+
+        </div>
+
+    </div>
+
+    <div class="dashboard-card">
+
+        <div class="card-icon">
+
+            <i class="bi bi-chat-dots-fill"></i>
+
+        </div>
+
+        <div class="card-title">
+
+            Chats
+
+        </div>
+
+        <div
+            id="chats"
+            class="card-value">
+
+            0
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= Bottom Section ================= -->
+
+<div class="row mt-4">
+
+    <!-- Knowledge Base Status -->
+
+    <div class="col-lg-6">
+
+        <div class="panel h-100">
+
+            <h4>
+
+                Knowledge Base Status
+
+            </h4>
+
+            <hr>
+
+            <p>
+
+                Storage Used
+
+                <span
+                    id="storage"
+                    class="float-end">
+
+                    --
+
+                </span>
+
+            </p>
+
+            <p>
+
+                Knowledge Sources
+
+                <span
+                    id="sources"
+                    class="float-end">
+
+                    --
+
+                </span>
+
+            </p>
+
+            <p>
+
+                Vector Database
+
+                <span
+                    id="vectordb"
+                    class="float-end">
+
+                    --
+
+                </span>
+
+            </p>
+
+            <p>
+
+                Embedding Model
+
+                <span
+                    id="embedding"
+                    class="float-end">
+
+                    --
+
+                </span>
+
+            </p>
+
+            <p>
+
+                LLM
+
+                <span
+                    id="llm"
+                    class="float-end">
+
+                    --
+
+                </span>
+
+            </p>
+
+            <p>
+
+                System Status
+
+                <span
+                    id="status"
+                    class="float-end text-success">
+
+                    Healthy
+
+                </span>
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Quick Actions -->
+
+    <div class="col-lg-6">
+
+        <div class="panel h-100">
+
+            <h4>
+
+                Quick Actions
+
+            </h4>
+
+            <hr>
+
+            <a
+                href="/upload/"
+                class="btn btn-primary w-100 mb-3">
+
+                <i class="bi bi-upload me-2"></i>
+
+                Upload Documents
+
+            </a>
+
+            <a
+                href="/website/"
+                class="btn btn-success w-100 mb-3">
+
+                <i class="bi bi-globe2 me-2"></i>
+
+                Index Website
+
+            </a>
+
+            <button
+                id="openAssistant"
+                class="btn btn-warning w-100 mb-3">
+
+                <i class="bi bi-chat-dots-fill me-2"></i>
+
+                Open AI Assistant
+
+            </button>
+
+            <!-- <a
+                href="/analytics/"
+                class="btn btn-outline-primary w-100">
+
+                <i class="bi bi-bar-chart-fill me-2"></i>
+
+                View Analytics
+
+            </a> -->
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+
+<script>
+
+    requireLogin();
+
+    const user = getUser();
+
+    const hour = new Date().getHours();
+
+    let greeting = "Good Evening";
+
+    if (hour >= 5 && hour < 12) {
+
+        greeting = "Good Morning";
+
+    }
+
+    else if (hour >= 12 && hour < 17) {
+
+        greeting = "Good Afternoon";
+
+    }
+
+    else {
+
+        greeting = "Good Evening";
+
+    }
+
+    if (user) {
+
+        document.getElementById(
+
+            "welcomeUser"
+
+        ).innerHTML =
+
+            `${greeting}, ${user.name} !`;
+
+    }
+
+</script>
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+{% endblock %}

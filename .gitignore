@@ -1,0 +1,16 @@
+venv/
+__pycache__/
+*.pyc
+.env
+
+instance/
+
+uploads/
+
+chroma_db/
+
+migrations/__pycache__/
+
+.vscode/
+
+.DS_Store

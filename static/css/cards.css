@@ -1,0 +1,73 @@
+.dashboard-card{
+
+    background:var(--card);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    transition:.3s;
+
+    border:1px solid var(--border);
+
+}
+
+/* .dashboard-card:hover{
+
+    transform:translateY(-6px);
+
+    background:var(--card-hover);
+
+} */
+
+.card-title{
+
+    color:var(--text-light);
+
+    font-size:15px;
+
+}
+
+.card-value{
+
+    font-size:36px;
+
+    font-weight:700;
+
+    margin-top:10px;
+
+}
+
+.card-icon{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:15px;
+
+    background:var(--primary);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:24px;
+
+    margin-bottom:15px;
+
+}
+
+.panel{
+
+    background:var(--card);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    border:1px solid var(--border);
+
+}
