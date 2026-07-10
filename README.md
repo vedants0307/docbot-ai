@@ -27,6 +27,11 @@ It features secure JWT authentication, PostgreSQL-backed metadata management, do
 
 ---
 
+### Register Page 
+![Register Page](screenshots/register-page.png)
+
+---
+
 ### Dashboard
 
 ![Dashboard](screenshots/dashboard.png)
