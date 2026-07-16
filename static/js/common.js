@@ -18,16 +18,26 @@ document.addEventListener("DOMContentLoaded", function () {
         "closeChat"
     );
 
-    if(chatButton && chatPanel && closeChat){
+    if (
+
+        chatButton &&
+
+        chatPanel &&
+
+        closeChat
+
+    ) {
 
         chatButton.addEventListener(
 
             "click",
 
-            function(){
+            function () {
 
                 chatPanel.classList.add(
+
                     "active"
+
                 );
 
             }
@@ -38,10 +48,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             "click",
 
-            function(){
+            function () {
 
                 chatPanel.classList.remove(
+
                     "active"
+
                 );
 
             }
@@ -58,19 +70,77 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+
+// -----------------------------------
+// Logout (Works on Every Page)
+// -----------------------------------
+
+document.addEventListener(
+
+    "click",
+
+    function (event) {
+
+        const logoutBtn = event.target.closest(
+
+            "#logoutBtn"
+
+        );
+
+        if (!logoutBtn) {
+
+            return;
+
+        }
+
+        event.preventDefault();
+
+        logout();
+
+    }
+
+);
+
+function logout() {
+
+    console.log("Logging Out...");
+
+    localStorage.removeItem(
+
+        "token"
+
+    );
+
+    localStorage.removeItem(
+
+        "user"
+
+    );
+
+    window.location.replace(
+
+        "/auth"
+
+    );
+
+}
+
+
 // -----------------------------------
 // Global Search Scope Loader
 // -----------------------------------
 
-async function loadSearchSources(){
+async function loadSearchSources() {
 
-    try{
+    try {
 
         const select = document.getElementById(
+
             "searchScope"
+
         );
 
-        if(!select){
+        if (!select) {
 
             return;
 
@@ -86,17 +156,17 @@ async function loadSearchSources(){
 
         select.innerHTML = "";
 
-        select.innerHTML +=
+        select.innerHTML += `
 
-        `
-        <option value="global">
+            <option value="global">
 
-            🌍 Global Search
+                🌍 Global Search
 
-        </option>
+            </option>
+
         `;
 
-        sources.forEach(source=>{
+        sources.forEach(source => {
 
             const icon =
 
@@ -106,21 +176,21 @@ async function loadSearchSources(){
 
                 : "📄";
 
-            select.innerHTML +=
+            select.innerHTML += `
 
-            `
-            <option value="${source}">
+                <option value="${source}">
 
-                ${icon} ${source}
+                    ${icon} ${source}
 
-            </option>
+                </option>
+
             `;
 
         });
 
     }
 
-    catch(error){
+    catch (error) {
 
         console.error(
 
@@ -134,33 +204,50 @@ async function loadSearchSources(){
 
 }
 
+
 // -----------------------------------
 // Refresh Entire Knowledge Base
 // -----------------------------------
 
-async function refreshKnowledgeBase(){
+async function refreshKnowledgeBase() {
 
-    try{
+    try {
 
-        if(typeof loadDocuments==="function"){
+        if (
+
+            typeof loadDocuments === "function"
+
+        ) {
 
             await loadDocuments();
 
         }
 
-        if(typeof loadWebsites==="function"){
+        if (
+
+            typeof loadWebsites === "function"
+
+        ) {
 
             await loadWebsites();
 
         }
 
-        if(typeof loadSearchSources==="function"){
+        if (
+
+            typeof loadSearchSources === "function"
+
+        ) {
 
             await loadSearchSources();
 
         }
 
-        if(typeof loadAnalytics==="function"){
+        if (
+
+            typeof loadAnalytics === "function"
+
+        ) {
 
             await loadAnalytics();
 
@@ -168,7 +255,7 @@ async function refreshKnowledgeBase(){
 
     }
 
-    catch(error){
+    catch (error) {
 
         console.error(
 
@@ -181,3 +268,6 @@ async function refreshKnowledgeBase(){
     }
 
 }
+
+
+
