@@ -1,7 +1,7 @@
 from flask import Blueprint
 from flask import request
 from flask import jsonify
-
+from flask_jwt_extended import jwt_required
 from services.rag_service import rag_service
 
 
@@ -20,6 +20,7 @@ chat_bp = Blueprint(
     "/send_message",
     methods=["POST"]
 )
+@jwt_required()
 def send_message():
 
     data = request.get_json()

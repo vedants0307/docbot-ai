@@ -313,14 +313,15 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
 
         }
-
+        const html = marked.parse(message);
+        
         body.innerHTML += `
 
             <div class="message-row">
 
                 <div class="bot-message">
 
-                    ${message}
+                    ${html}
 
                     ${sourcesHTML}
 

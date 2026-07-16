@@ -101,13 +101,17 @@ document.addEventListener(
 
 );
 
-function logout() {
+async function logout() {
 
-    console.log("Logging Out...");
+    await fetch(
 
-    localStorage.removeItem(
+        "/auth/logout",
 
-        "token"
+        {
+
+            method: "POST"
+
+        }
 
     );
 
@@ -117,11 +121,7 @@ function logout() {
 
     );
 
-    window.location.replace(
-
-        "/auth"
-
-    );
+    window.location.href = "/auth";
 
 }
 
@@ -172,9 +172,9 @@ async function loadSearchSources() {
 
                 source.startsWith("http")
 
-                ? "🌐"
+                    ? "🌐"
 
-                : "📄";
+                    : "📄";
 
             select.innerHTML += `
 

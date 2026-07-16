@@ -2,7 +2,7 @@ from flask import Blueprint
 from flask import render_template
 from flask import request
 from flask import jsonify
-
+from flask_jwt_extended import jwt_required
 from services.rag_service import rag_service
 
 
@@ -18,6 +18,7 @@ website_bp = Blueprint(
 
 
 @website_bp.route("/")
+@jwt_required()
 def website():
 
     return render_template(
@@ -35,6 +36,7 @@ def website():
     "/index",
     methods=["POST"]
 )
+@jwt_required()
 def index_website():
 
     print("===== WEBSITE INDEX REQUEST =====")
@@ -78,6 +80,7 @@ def index_website():
 # -----------------------------------
 
 @website_bp.route("/list")
+@jwt_required()
 def list_websites():
 
     sources = rag_service.list_sources()
@@ -112,6 +115,7 @@ def list_websites():
     methods=["DELETE"]
 
 )
+@jwt_required()
 def delete_website():
 
     data = request.get_json()

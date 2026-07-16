@@ -2,7 +2,7 @@ from flask import Blueprint
 from flask import jsonify
 from flask import request
 from flask import render_template
-
+from flask import make_response
 from services.auth_service import auth_service
 
 
@@ -68,6 +68,36 @@ def register_page():
     )
 
 
+@auth_bp.route(
+
+    "/logout",
+
+    methods=["POST"]
+
+)
+def logout():
+
+    response = make_response(
+
+        jsonify(
+
+            {
+
+                "success": True
+
+            }
+
+        )
+
+    )
+
+    response.delete_cookie(
+
+        "access_token"
+
+    )
+
+    return response
 # ---------------------------------
 # Register API
 # ---------------------------------
@@ -215,8 +245,30 @@ def login():
 
         status_code = 401
 
-    return jsonify(
+    if result["success"]:
 
-        result
+        response = make_response(
 
-    ), status_code
+            jsonify(result)
+
+        )
+
+        response.set_cookie(
+
+            "access_token",
+
+            result["token"],
+
+            httponly=True,
+
+            samesite="Lax",
+
+            secure=False   # True after HTTPS deployment
+
+        )
+
+        return response
+
+    return jsonify(result), status_code
+
+

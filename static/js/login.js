@@ -1,19 +1,3 @@
-if (
-
-    localStorage.getItem(
-
-        "token"
-
-    )
-
-) {
-
-    window.location.href =
-
-        "/dashboard/";
-
-}
-
 document.addEventListener(
 
     "DOMContentLoaded",
@@ -136,6 +120,8 @@ document.addEventListener(
 
                         },
 
+                        credentials: "include",
+
                         body: JSON.stringify(
 
                             {
@@ -173,14 +159,6 @@ document.addEventListener(
                     );
 
                 }
-
-                localStorage.setItem(
-
-                    "token",
-
-                    data.token
-
-                );
 
                 localStorage.setItem(
 

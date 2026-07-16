@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import redirect
+from flask import request
 
 from config import Config
 
@@ -30,7 +31,11 @@ def create_app():
     # Initialize Extensions
     # -----------------------------
 
-    db.init_app(app)
+    db.init_app(
+
+        app
+
+    )
 
     migrate.init_app(
 
@@ -99,6 +104,43 @@ def create_app():
     with app.app_context():
 
         startup_service.sync_documents()
+
+    # -----------------------------
+    # Protect Routes
+    # -----------------------------
+
+    @app.before_request
+    def protect_routes():
+
+        if request.path.startswith(
+
+            "/static"
+
+        ):
+
+            return
+
+        if request.path.startswith(
+
+            "/auth"
+
+        ):
+
+            return
+
+        token = request.cookies.get(
+
+            "access_token"
+
+        )
+
+        if not token:
+
+            return redirect(
+
+                "/auth"
+
+            )
 
     # -----------------------------
     # Home Route

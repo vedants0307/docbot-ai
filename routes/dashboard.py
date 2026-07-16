@@ -1,7 +1,7 @@
 from flask import Blueprint
 from flask import render_template
 from flask import jsonify
-
+from flask_jwt_extended import jwt_required
 from services.dashboard_service import (
     dashboard_service
 )
@@ -36,6 +36,7 @@ def dashboard():
 # -----------------------------
 
 @dashboard_bp.route("/stats")
+@jwt_required()
 def dashboard_stats():
 
     return jsonify(

@@ -4,7 +4,7 @@ from flask import Blueprint
 from flask import jsonify
 from flask import render_template
 from flask import request
-
+from flask_jwt_extended import jwt_required
 from services.document_db_service import (
     document_db_service
 )
@@ -52,6 +52,7 @@ os.makedirs(
 # -----------------------------------
 
 @upload_bp.route("/")
+@jwt_required()
 def upload():
 
     return render_template(
@@ -72,6 +73,7 @@ def upload():
     methods=["POST"]
 
 )
+@jwt_required()
 def upload_files():
 
     files = request.files.getlist(
@@ -161,6 +163,7 @@ def upload_files():
 @upload_bp.route(
     "/documents"
 )
+@jwt_required()
 def documents():
 
     docs = document_db_service.list_documents()
@@ -186,6 +189,7 @@ def documents():
     "/delete/<filename>",
     methods=["DELETE"]
 )
+@jwt_required()
 def delete_document(filename):
 
     file_path = os.path.join(

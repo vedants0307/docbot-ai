@@ -1,6 +1,6 @@
 from flask import Blueprint
 from flask import jsonify
-
+from flask_jwt_extended import jwt_required
 from services.rag_service import rag_service
 
 
@@ -20,6 +20,7 @@ sources_bp = Blueprint(
 # ---------------------------------
 
 @sources_bp.route("/list")
+@jwt_required()
 def list_sources():
 
     return jsonify(
@@ -34,6 +35,7 @@ def list_sources():
 # ---------------------------------
 
 @sources_bp.route("/documents")
+@jwt_required()
 def document_sources():
 
     documents = []
@@ -60,6 +62,7 @@ def document_sources():
 # ---------------------------------
 
 @sources_bp.route("/websites")
+@jwt_required()
 def website_sources():
 
     websites = []
