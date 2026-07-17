@@ -8,6 +8,20 @@ from flask_jwt_extended import jwt_required
 from services.document_db_service import (
     document_db_service
 )
+from services.supabase_service import (
+
+    upload_document,
+
+    delete_document
+
+)
+from services.supabase_service import (
+
+    upload_document as upload_to_supabase,
+
+    delete_document as delete_from_supabase
+
+)
 
 from services.rag_service import (
     rag_service
@@ -104,6 +118,11 @@ def upload_files():
 
         )
 
+        upload_document(
+            file_path,
+            file.filename
+        )
+
         print("Saved Path:", file_path)
         print("Exists:", os.path.exists(file_path))
 
@@ -142,6 +161,13 @@ def upload_files():
             }
 
         )
+
+        if os.path.exists(
+            file_path
+        ):
+            os.remove(
+                file_path
+            )
 
     return jsonify(
 
@@ -200,16 +226,26 @@ def delete_document(filename):
 
     )
 
+    # Delete from Supabase Storage
+    delete_from_supabase(
+
+        filename
+
+    )
+
+    # Delete local temp file if present
     if os.path.exists(file_path):
 
         os.remove(file_path)
 
+    # Delete embeddings
     deleted = rag_service.delete_document(
 
         filename
 
     )
 
+    # Delete metadata
     document_db_service.delete_document(
 
         filename
