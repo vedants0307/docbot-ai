@@ -117,7 +117,15 @@ def send_message():
 
             "answer": result["answer"],
 
-            "sources": sources
+            "sources": sources,
+
+            "rate_limit": result.get(
+
+                "rate_limit",
+
+                False
+
+            )
 
         }
 

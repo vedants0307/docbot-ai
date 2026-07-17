@@ -160,9 +160,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
             removeThinking();
 
+            // ------------------------------
+            // Gemini Rate Limit Popup
+            // ------------------------------
+
+            if (data.rate_limit) {
+
+                const modal = new bootstrap.Modal(
+
+                    document.getElementById(
+
+                        "rateLimitModal"
+
+                    )
+
+                );
+
+                modal.show();
+
+                return;
+
+            }
+
             addBotMessage(
 
                 data.answer,
+
                 data.sources
 
             );

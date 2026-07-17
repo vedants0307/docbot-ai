@@ -212,25 +212,63 @@ class RAGService:
 
         )
 
-        answer = chain.invoke(
+        try:
 
-            {
+            answer = chain.invoke(
 
-                "context": context,
+                {
 
-                "question": question
+                    "context": context,
+
+                    "question": question
+
+                }
+
+            )
+
+            return {
+
+                "answer": answer,
+
+                "sources": docs,
+
+                "rate_limit": False
 
             }
 
-        )
+        except Exception as e:
 
-        return {
+            error = str(e)
 
-            "answer": answer,
+            if (
 
-            "sources": docs
+                "429" in error
 
-        }
+                or
+
+                "RESOURCE_EXHAUSTED" in error
+
+                or
+
+                "quota" in error.lower()
+
+                or
+
+                "rate limit" in error.lower()
+
+            ):
+
+                return {
+
+                    "answer": "",
+
+                    "sources": [],
+
+                    "rate_limit": True
+
+                }
+
+            raise
     # ---------------------------------
     # Similarity Search
     # ---------------------------------
